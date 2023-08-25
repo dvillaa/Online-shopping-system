@@ -8,7 +8,7 @@ session_start();
 #login_success string will go back to called Anonymous funtion $("#login").click() 
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
-	$email = mysqli_real_escape_string($con,$_POST["email"]);
+	$email = mysqli_real_escape_string($con,wp_slash($_POST["email"]));
 	$password = wp_slash($_POST["password"]);
 	$sql = "SELECT * FROM user_info WHERE email = '$email' AND password = '$password'";
 	$run_query = mysqli_query($con,$sql);
